@@ -1,33 +1,31 @@
 Ray Intersection Engine
 ======================
 
-**University of Pennsylvania, CIS 561: Advanced Computer Graphics, Homework 1**
-
 Notes to Use
 ------------
 I placed 5 buttons on GUI, and each of them points to a test image below. Press the button and choose a directory, the respective image would display on left area of button. All test results are stored in "test img" folder.
 
-Yuxuan Huang's Results
+Test Results
 ------------
 Testing Ray Casting: <br />
-![](https://github.com/CIS-461-2022/homework-01-ray-intersection-engine-HarrietKira/blob/main/test%20img/TestRayCasting.png) <br />
+![](test%20img/TestRayCasting.png) <br />
 <br />
 Testing Intersection for Sphere: <br />
-![](https://github.com/CIS-461-2022/homework-01-ray-intersection-engine-HarrietKira/blob/main/test%20img/TestIntersection1.png) <br />
+![](test%20img/TestIntersection1.png) <br />
 <br />
 Testing Intersection for SquarePlane: <br />
-![](https://github.com/CIS-461-2022/homework-01-ray-intersection-engine-HarrietKira/blob/main/test%20img/TestIntersection2.png) <br />
+![](test%20img/TestIntersection2.png) <br />
 <br />
 Testing Intersection for Scene: <br />
 Sphere with `T(-1, 1, 0)`, no rotation, `S(2, 4, 2)` <br /> 
 SquarePlane with `T(0, 0, -5)`, `R(0, 30, 0)`, `S(10, 10, 1)` <br />
-![](https://github.com/CIS-461-2022/homework-01-ray-intersection-engine-HarrietKira/blob/main/test%20img/TestIntersection3.png) <br />
+![](test%20img/TestIntersection3.png) <br />
 <br />
 Testing Intersection for Scene: <br />
 Sphere with `T(0, 0, 1)`, `R(0, 0, 45)`, `S(2, 1, 1)` <br />
 Second Sphere with `T(0, 0, 1)`, `R(0, 0, 45)`, `S(2, 1, 1)` <br />
 SquarePlane with `T(0, -0.5, 0)`, `R(90, 0, 0)`, `S(5, 5, 1)` <br />
-![](https://github.com/CIS-461-2022/homework-01-ray-intersection-engine-HarrietKira/blob/main/test%20img/TestIntersection4.png)
+![](test%20img/TestIntersection4.png)
 
 Overview
 ------------
@@ -92,7 +90,7 @@ between the button and the slot.
 In order to build your ray tracing application from here, you will first create
 the following classes:
 
-`Ray` Class (8 points)
+`Ray` Class
 ------------
 Create a `Ray` class that stores an origin and a direction for itself. We
 recommend using the `Point3f` and `Vector3f` aliases for the `vec3` class for
@@ -105,7 +103,7 @@ this `Ray` by that transformation matrix. Note that you'll have to temporarily
 convert your `Ray`'s origin and direction to `vec4`s for this to work. You'll
 use this function when testing `Ray`s for intersection with geometry.
 
-`Camera` Class (12 points)
+`Camera` Class
 -------------
 Create a `Camera` class with a constructor that takes in the following data:
 * An `eye` position
@@ -156,7 +154,7 @@ sequence. Perhaps you multiplied by the wrong `Uw`?
 Once you've tested your ray casting, you can move on to implementing more
 classes.
 
-`Intersection` Class (10 points)
+`Intersection` Class
 --------
 This class will represent the set of information relevant to a point of
 intersection between a `Ray` and a `Primitive` in the scene. It should store
@@ -175,7 +173,7 @@ find their points of intersection with the scene's geometry. For this assignment
 you will ultimately output the surface normal at an `Intersection` as the color
 of the pixel that spawned the ray intersecting with the surface.
 
-`Transform` Class (10 points)
+`Transform` Class
 -----------
 A `Transform` will represent the sequence of transformations that have been
 applied to a primitive in the scene in order to transform it to its current
@@ -204,7 +202,7 @@ values and sets up the `Transform`'s members accordingly.
 You should also write any accessor functions you deem necessary. Remember your
 const correctness!
 
-`Primitive` Class and `Shape` Class (20 points)
+`Primitive` Class and `Shape` Class
 --------
 The `Primitive` class will be used to represent a construct that contains data
 such as a shape, a material, and a light source. For this assignment, we will
@@ -242,7 +240,7 @@ the function returned `true`.
 We will discuss the implementation of `getIntersection` for `Shape` subclasses
 later in this document.
 
-`Scene` Class (10 points)
+`Scene` Class
 ---------
 This class will be a container for all `Primitive`s in this assignment. A `Scene`
 should contain a `std::vector` of `std::unique_ptr`s to `Primitive`s as a member
@@ -256,7 +254,7 @@ the `Intersection` with the smallest non-negative `t` value via the
 `Intersection*` input to the function. It should return `false` if the `Ray`
 does not intersect any geometry.
 
-`Sphere` and `SquarePlane` Classes (20 points)
+`Sphere` and `SquarePlane` Classes
 ---------
 These two classes should inherit from the `Shape` class and should implement its
 `getIntersection` function. A unit `Sphere` should be assumed to be centered at
@@ -293,15 +291,6 @@ You should receive this image:
 
 ![](surfaceNormals.png)
 
-Code Style (10 points)
-------------
-For the ray tracer assignments in this course, we will be grading you on coding
-style since you'll be writing nearly all of the code yourself. We will be
-following the style guide defined in CIS 560; you can find it [here](https://www.cis.upenn.edu/~cis460/19fa/styleguide.html) if you need to
-review it. Part of this style guide is based on the design decisions made in
-`Physically Based Rendering`, so adhering to it now will help you to better
-understand PBRT's code once we begin the path tracer.
-
 Submitting your project
 --------------
 Rather than uploading a zip file to Canvas, you will simply submit a link to
@@ -310,9 +299,7 @@ __Commits__ tab of your repository on Github, you will be brought to a list of
 commits you've made. Simply click on the one you wish for us to grade, then copy
 and paste the URL of the page into the Canvas submission form.
 
-At the top of this Markdown file, add a section titled "[Your Full Name Here]'s
-Results" and show your test renders there. In addition to the tests for which
-we provided example renders, upload the image you receive for rendering a scene
+In addition to the tests for which we provided example renders, upload the image you receive for rendering a scene
 with these attributes:
 * A `Sphere` with a translation of `(0, 0, 1)`, a rotation of `(0, 0, 45)`, and
 a scale of `(2, 1, 1)`.
